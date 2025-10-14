@@ -36,7 +36,7 @@ session_start();
       </div>
 
       <div class="btn-group">
-  <button type="button" class="btn" onclick="window.location.href='index.html'">Return</button>
+  <button type="button" class="btn" onclick="window.location.href='index.php'">Return</button>
   <button type="submit" name="reg_user" class="btn">Confirm</button>
 </div>
 

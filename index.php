@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>ลาบญวนชวนมากิน</title>
-</head>แก้มาให้เลย 
+</head>
 
 <body>
     <!-- ส่วนหัว -->
@@ -23,7 +23,7 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="menu.php">Menu</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="logout.php">LogOut</a></li>
+                        <li><a href="login.php">LOG-In</a></li>
                     </ul>
                 </div>
             </div>
