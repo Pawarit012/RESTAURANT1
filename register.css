@@ -1,0 +1,90 @@
+/* รีเซ็ตพื้นฐาน */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* พื้นหลังไล่สีเหลืองส้ม */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e46e0d, #ff9e57);
+}
+
+/* กล่องขาวตรงกลาง */
+.form-container {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 40px 60px;
+  width: 550px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  border-radius: 25px; /* ✅ เพิ่มมุมโค้งมน */
+}
+
+/* หัวข้อ */
+.form-container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ช่อง input */
+.input-group {
+  margin: 15px 0;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 500;
+  outline: none;
+}
+
+/* ปุ่ม Confirm + Return */
+.btn-group {
+  display: flex;
+  justify-content: center; /* ✅ ปุ่มอยู่ตรงกลาง */
+  gap: 20px; /* ✅ เว้นระยะห่างระหว่างปุ่ม */
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 10px 35px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #ffe873, #ffb347);
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #ff9e57;
+  transition: 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 #ff9e57;
+}
+
+/* กล่องข้อความ error */
+.error {
+  color: #a94442;
+  background: #ffdddd;
+  border: 1px solid #ff9999;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
