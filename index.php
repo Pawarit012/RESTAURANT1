@@ -11,13 +11,12 @@
 
 <body>
     <!-- ส่วนหัว -->
-    <header>
-        
+    <header>    
         <nav>
             <div class="container">
                 <div class="nav-con">
                     <div class="logo">
-                        <img src="show_logo.php" alt="ลาบญวนชวนมากิน" width="100px">
+                        <img src="PICTURE/file_0000000019f461f790a1c4885f29f07c-removebg-preview.png" alt="ลาบญวนชวนมากิน" width="100px">
                     </div>
                     <ul class="menu">
                         <li><a href="#">Home</a></li>
