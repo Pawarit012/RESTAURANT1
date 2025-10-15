@@ -10,26 +10,7 @@
 </head>
 
 <body>
-    <!-- ส่วนหัว -->
-    
-        <nav>
-            <div class="container">
-                <div class="nav-con">
-                    <div class="logo">
-                        <img src="PICTURE/file_0000000019f461f790a1c4885f29f07c-removebg-preview.png" alt="ลาบญวนชวนมากิน" width="100px">
-                    </div>
-                    <ul class="menu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="menu.php">Menu</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="login.php">LOG-In</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    
-
-    <!-- เนื้อหาหลัก -->
+    <?php include("nav.php") ?>
     <section>
         <div class="container-1">
             <div class="text">
@@ -49,6 +30,7 @@
         </div>
     </div>
 
+    
     <script src="script.js"></script>
 </body>
 

@@ -2,10 +2,7 @@
 session_start();
 
 // ถ้ายังไม่ได้ล็อกอิน
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
+
 ?>
 
 
@@ -429,31 +426,11 @@ h4 {
 
 <body>
 	<!-- Header -->
-	<header>
-		<nav>
-			<div class="container">
-				<div class="nav-con">
-					<div class="logo">
-						<img src="PICTURE/file_0000000019f461f790a1c4885f29f07c-removebg-preview.png" alt="ลาบญวนชวนมากิน" width="100px">
-					</div>
-					<ul class="menu">
-						<li><a href="index.php">Home</a></li>
-						<li><a href="#">menu</a></li>
-						<li><a href="#">Contact</a></li>
-						<li><a href="logout.php">LogOut</a></li>
-						<li><a href="#"></a></li>
-						<li class="cart-icon" onclick="toggleCart()">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-								<path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-							</svg>
-							<span class="cart-badge" id="cartBadge">0</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
-
+	<?php include("nav.php")?>
+	
+							
+						
+	
 	<!-- Overlay -->
 	<div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
@@ -477,7 +454,13 @@ h4 {
 				<span>ยอดรวม:</span>
 				<span id="totalPrice">0 บาท</span>
 			</div>
-			<button class="checkout-btn" onclick="checkout()">สั่งซื้อ</button>
+			<!-- <button class="checkout-btn" name="orders" onclick="checkout()">สั่งซื้อ</button> -->
+			 <form method="POST" action="payment.php">
+    			<button class="checkout-btn" name="orders" onclick="checkout()" >สั่งซื้อ</button>
+			</form>
+
+<!-- ใน process.php -->
+
 		</div>
 	</div>
 
@@ -667,28 +650,34 @@ h4 {
 			totalItems.textContent = `${itemCount} ชิ้น`;
 			totalPrice.textContent = `${priceSum} บาท`;
 		}
+		    let isLoggedIn = <?php echo isset($_SESSION['username']) ? 'true' : 'false'; ?>;
 
 		// ฟังก์ชันสั่งซื้อ
-		function checkout() {
+				function checkout() {
+			if (!isLoggedIn) {
+				alert('กรุณาล็อกอินก่อนสั่งซื้อ');
+				return;
+			}
+
 			if (cart.length === 0) {
 				alert('กรุณาเลือกสินค้าก่อนสั่งซื้อ');
 				return;
 			}
-			
+
 			const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 			const priceSum = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-			
+
 			const orderDetails = cart.map(item => 
 				`${item.name} x${item.quantity} = ${item.price * item.quantity} บาท`
 			).join('\n');
-			
+
 			alert(`ยืนยันการสั่งซื้อ\n\nรายการสินค้า:\n${orderDetails}\n\nจำนวนทั้งหมด: ${itemCount} ชิ้น\nยอดรวม: ${priceSum} บาท\n\nขอบคุณที่สั่งซื้อค่ะ!`);
-			
-			// ล้างตระกร้า
+
 			cart = [];
 			updateCart();
 			toggleCart();
 		}
+
 
 		// เรียกใช้ updateCart เมื่อโหลดหน้าเว็บ
 		updateCart();

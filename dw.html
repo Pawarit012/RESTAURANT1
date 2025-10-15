@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เมนูอาหาร</title>
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background-color: #fffaf2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .category-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .category-buttons button {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .category-buttons button:hover {
+      background-color: #e68900;
+    }
+
+    .menu-item {
+      display: none; /* ซ่อนไว้ก่อน */
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+
+    .menu-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+
+    .menu-item.show {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>เมนูอาหาร</h1>
+
+  <div class="category-buttons">
+    <button onclick="filterMenu('all')">ทั้งหมด</button>
+    <button onclick="filterMenu('fried')">ของทอด</button>
+    <button onclick="filterMenu('soup')">ของต้ม</button>
+    <button onclick="filterMenu('grill')">ของย่าง</button>
+  </div>
+
+  <div class="menu-list">
+    <div class="menu-item fried">
+      <img src="fried_chicken.jpg" alt="">
+      <div>ไก่ทอด</div>
+    </div>
+
+    <div class="menu-item soup">
+      <img src="tomyum.jpg" alt="">
+      <div>ต้มยำกุ้ง</div>
+    </div>
+
+    <div class="menu-item grill">
+      <img src="grilled_pork.jpg" alt="">
+      <div>หมูปิ้ง</div>
+    </div>
+
+    <div class="menu-item fried">
+      <img src="fried_fish.jpg" alt="">
+      <div>ปลาทอดน้ำปลา</div>
+    </div>
+
+    <div class="menu-item soup">
+      <img src="clear_soup.jpg" alt="">
+      <div>แกงจืดเต้าหู้หมูสับ</div>
+    </div>
+  </div>
+
+  <script>
+    // แสดงทั้งหมดตอนโหลดครั้งแรก
+    filterMenu('all');
+
+    function filterMenu(category) {
+      const items = document.querySelectorAll('.menu-item');
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.classList.add('show');
+        } else {
+          item.classList.remove('show');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
