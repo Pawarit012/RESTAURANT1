@@ -11,7 +11,7 @@
 
 <body>
     <!-- ส่วนหัว -->
-    <header>    
+    
         <nav>
             <div class="container">
                 <div class="nav-con">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    
 
     <!-- เนื้อหาหลัก -->
     <section>
