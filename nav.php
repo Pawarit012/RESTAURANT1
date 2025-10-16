@@ -188,7 +188,7 @@ nav {
                         <li><a href="login.php">LOG-In</a></li>
                     <?php else: ?>
                         <li><a href="logout.php">Logout</a></li>
-                        <li><a href="profile">account</a></li>
+                        <li><a href="order_history.php">ประวัติคำสั่งซื้อ</a></li>
                     <?php endif; ?>
 
                     <?php $current_page = basename($_SERVER['PHP_SELF'])?>

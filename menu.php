@@ -3,6 +3,8 @@ session_start();
 
 // ถ้ายังไม่ได้ล็อกอิน
 
+
+
 ?>
 
 
@@ -455,8 +457,9 @@ h4 {
 				<span id="totalPrice">0 บาท</span>
 			</div>
 			<!-- <button class="checkout-btn" name="orders" onclick="checkout()">สั่งซื้อ</button> -->
-			 <form method="POST" action="payment.php">
-    			<button class="checkout-btn" name="orders" onclick="checkout()" >สั่งซื้อ</button>
+			<form method="POST" action="payment.php" onsubmit="return checkout()">
+				<input type="hidden" id="cartData" name="cartData" value="">
+				<button class="checkout-btn" name="orders">สั่งซื้อ</button>
 			</form>
 
 <!-- ใน process.php -->
@@ -654,33 +657,21 @@ h4 {
 
 		// ฟังก์ชันสั่งซื้อ
 				function checkout() {
-			if (!isLoggedIn) {
-				alert('กรุณาล็อกอินก่อนสั่งซื้อ');
-				return;
-			}
+    if (!isLoggedIn) {
+        alert('กรุณาล็อกอินก่อนสั่งซื้อ');
+        return false;
+    }
 
-			if (cart.length === 0) {
-				alert('กรุณาเลือกสินค้าก่อนสั่งซื้อ');
-				return;
-			}
+    if (cart.length === 0) {
+        alert('กรุณาเลือกสินค้าก่อนสั่งซื้อ');
+        return false;
+    }
 
-			const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-			const priceSum = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-			const orderDetails = cart.map(item => 
-				`${item.name} x${item.quantity} = ${item.price * item.quantity} บาท`
-			).join('\n');
-
-			alert(`ยืนยันการสั่งซื้อ\n\nรายการสินค้า:\n${orderDetails}\n\nจำนวนทั้งหมด: ${itemCount} ชิ้น\nยอดรวม: ${priceSum} บาท\n\nขอบคุณที่สั่งซื้อค่ะ!`);
-
-			cart = [];
-			updateCart();
-			toggleCart();
-		}
-
-
-		// เรียกใช้ updateCart เมื่อโหลดหน้าเว็บ
-		updateCart();
+    // แปลง cart เป็น JSON และใส่ใน hidden input
+    document.getElementById('cartData').value = JSON.stringify(cart);
+    
+    return true; // ให้ form submit ต่อ
+}
 	</script>
 	
 </body>
