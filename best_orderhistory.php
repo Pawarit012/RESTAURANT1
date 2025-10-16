@@ -24,21 +24,9 @@ $conn->set_charset("utf8");
 
 $user_username = $_SESSION['username'];
 
-// ดึงข้อมูลคำสั่งซื้อทั้งหมดของผู้ใช้พร้อม JOIN กับตาราง user
-$sql = "SELECT 
-            o.*,
-            u.email,
-            u.tel
-        FROM orders o
-        LEFT JOIN user u ON o.username = u.username
-        WHERE o.username = ? 
-        ORDER BY o.created_at DESC";
+// ดึงข้อมูลคำสั่งซื้อทั้งหมดของผู้ใช้ (แก้ไข: ใช้ created_at แทน order_date)
+$sql = "SELECT * FROM orders WHERE username = ? ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    die("Prepare failed: " . $conn->error);
-}
-
 $stmt->bind_param("s", $user_username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -141,20 +129,6 @@ $result = $stmt->get_result();
                         <div class="order-date">
                             📅 วันที่สั่ง: <?php echo date('d/m/Y H:i น.', strtotime($order['created_at'])); ?>
                         </div>
-
-                        <div class="order-date">
-                            👤 ชื่อ:<?php echo "username: " . $_SESSION['username'] . "";?>
-
-                        </div>
-
-                        <div class="order-date">
-                            📧 อีเมล: <?php echo htmlspecialchars($order['email'] ?? 'ไม่มีข้อมูล'); ?>
-                        </div>
-
-                        <div class="order-date">
-                            📞 เบอร์โทร: <?php echo htmlspecialchars($order['tel'] ?? 'ไม่มีข้อมูล'); ?>
-                        </div>
-
 
                         <div class="order-items">
                             <strong>รายการสินค้า:</strong>

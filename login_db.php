@@ -23,6 +23,7 @@ if (isset($_POST['login_user'])) {
         if ($result && mysqli_num_rows($result) === 1) {
             $_SESSION['username'] = $username;
             $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
+            $_SESSION['user_id'] = $user['id'];
             header('location: index.php');
             exit;
         } else {

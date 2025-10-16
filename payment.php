@@ -98,7 +98,7 @@ if (isset($_POST['orders']) && isset($_POST['cartData'])) {
                 }
                 
                 body {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #e68618ff 0%, #e60c0cff 100%);
                     min-height: 100vh;
                     display: flex;
                     justify-content: center;

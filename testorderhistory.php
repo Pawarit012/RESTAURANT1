@@ -24,21 +24,9 @@ $conn->set_charset("utf8");
 
 $user_username = $_SESSION['username'];
 
-// ดึงข้อมูลคำสั่งซื้อทั้งหมดของผู้ใช้พร้อม JOIN กับตาราง user
-$sql = "SELECT 
-            o.*,
-            u.email,
-            u.tel
-        FROM orders o
-        LEFT JOIN user u ON o.username = u.username
-        WHERE o.username = ? 
-        ORDER BY o.created_at DESC";
+// ดึงข้อมูลคำสั่งซื้อทั้งหมดของผู้ใช้ (แก้ไข: ใช้ created_at แทน order_date)
+$sql = "SELECT * FROM orders WHERE username = ? ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql);
-
-if (!$stmt) {
-    die("Prepare failed: " . $conn->error);
-}
-
 $stmt->bind_param("s", $user_username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -51,53 +39,7 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ประวัติคำสั่งซื้อ</title>
     <link rel="stylesheet" href="order_history.css">
-    <style>
-        .delete-btn {
-            background-color: #ff4444;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-        
-        .delete-btn:hover {
-            background-color: #cc0000;
-        }
-        
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .delete-form {
-            display: inline-block;
-        }
-    </style>
-    <script>
-        function confirmDelete(orderId) {
-            if (confirm('คุณแน่ใจหรือไม่ที่จะลบคำสั่งซื้อนี้?\nการกระทำนี้ไม่สามารถย้อนกลับได้')) {
-                document.getElementById('delete-form-' + orderId).submit();
-            }
-        }
-    </script>
+    
 </head>
 <body>
     <div class="container">
@@ -105,19 +47,6 @@ $result = $stmt->get_result();
         
         <h1>📜 ประวัติคำสั่งซื้อของคุณ</h1>
         <?php echo "<h1>username: " . $_SESSION['username'] . "</h1>";?>
-
-        <?php
-        // แสดงข้อความแจ้งเตือน
-        if (isset($_GET['deleted'])) {
-            if ($_GET['deleted'] == 'success') {
-                echo '<div class="alert alert-success">✓ ลบคำสั่งซื้อเรียบร้อยแล้ว</div>';
-            } elseif ($_GET['deleted'] == 'error') {
-                echo '<div class="alert alert-error">✗ เกิดข้อผิดพลาดในการลบคำสั่งซื้อ</div>';
-            } elseif ($_GET['deleted'] == 'unauthorized') {
-                echo '<div class="alert alert-error">✗ ไม่สามารถลบคำสั่งซื้อนี้ได้</div>';
-            }
-        }
-        ?>
 
         <div class="orders-container">
             <?php if ($result->num_rows > 0): ?>
@@ -141,20 +70,6 @@ $result = $stmt->get_result();
                         <div class="order-date">
                             📅 วันที่สั่ง: <?php echo date('d/m/Y H:i น.', strtotime($order['created_at'])); ?>
                         </div>
-
-                        <div class="order-date">
-                            👤 ชื่อ:<?php echo "username: " . $_SESSION['username'] . "";?>
-
-                        </div>
-
-                        <div class="order-date">
-                            📧 อีเมล: <?php echo htmlspecialchars($order['email'] ?? 'ไม่มีข้อมูล'); ?>
-                        </div>
-
-                        <div class="order-date">
-                            📞 เบอร์โทร: <?php echo htmlspecialchars($order['tel'] ?? 'ไม่มีข้อมูล'); ?>
-                        </div>
-
 
                         <div class="order-items">
                             <strong>รายการสินค้า:</strong>
@@ -189,13 +104,6 @@ $result = $stmt->get_result();
                                 <span><?php echo number_format($order['total_amount'], 2); ?> บาท</span>
                             </div>
                         </div>
-
-                        <form id="delete-form-<?php echo $order['order_id']; ?>" class="delete-form" action="delete_order.php" method="POST">
-                            <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
-                            <button type="button" class="delete-btn" onclick="confirmDelete(<?php echo $order['order_id']; ?>)">
-                                🗑️ ลบคำสั่งซื้อ
-                            </button>
-                        </form>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>

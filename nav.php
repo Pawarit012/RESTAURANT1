@@ -60,6 +60,7 @@ nav {
     align-items: center;
     border-radius: 10px;
     margin: 2rem;
+    
 }
 
 .menu li {
@@ -67,6 +68,9 @@ nav {
     text-decoration: none;
     align-items: center;
     border-radius: 10px;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    
 
 
 
@@ -79,11 +83,13 @@ nav {
     border-radius: 10px;
     font-size: larger;
     font-family: var(--font-family);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 
 
     background-color: rgb(230, 216, 34);
     padding: .5rem 1rem;
-
+   
 }
 
 /* Cart Icon */

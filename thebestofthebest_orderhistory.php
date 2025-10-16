@@ -143,8 +143,7 @@ $result = $stmt->get_result();
                         </div>
 
                         <div class="order-date">
-                            👤 ชื่อ:<?php echo "username: " . $_SESSION['username'] . "";?>
-
+                            👤 ชื่อ: <?php echo htmlspecialchars(($order['firstname'] ?? '') . ' ' . ($order['lastname'] ?? '')); ?>
                         </div>
 
                         <div class="order-date">
@@ -152,9 +151,8 @@ $result = $stmt->get_result();
                         </div>
 
                         <div class="order-date">
-                            📞 เบอร์โทร: <?php echo htmlspecialchars($order['tel'] ?? 'ไม่มีข้อมูล'); ?>
+                            📞 เบอร์โทร: <?php echo htmlspecialchars($order['telephone'] ?? 'ไม่มีข้อมูล'); ?>
                         </div>
-
 
                         <div class="order-items">
                             <strong>รายการสินค้า:</strong>
