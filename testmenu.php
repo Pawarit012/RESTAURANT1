@@ -459,25 +459,8 @@ h4 {
 			<!-- <button class="checkout-btn" name="orders" onclick="checkout()">สั่งซื้อ</button> -->
 			<form method="POST" action="payment.php" onsubmit="return checkout()">
 				<input type="hidden" id="cartData" name="cartData" value="">
-
-				<!-- ช่องทางการจ่ายเงิน -->
-				<div style="margin-top: 20px;">
-					<h3>เลือกช่องทางการชำระเงิน</h3>
-					<label style="display: flex; align-items: center; margin-bottom: 10px;">
-						<input type="radio" name="payment_method" value="prompay" required>
-						<span style="margin-left: 8px;">Prompay</span>
-						<img src="image.png" alt="Prompay QR" style="width: 200px; height: 250px; margin-left: 10px;">
-					</label>
-
-					<label style="display: flex; align-items: center; margin-bottom: 10px;">
-						<input type="radio" name="payment_method" value="cash" required>
-						<span style="margin-left: 8px;">เงินสด</span>
-					</label>
-				</div>
-
 				<button class="checkout-btn" name="orders">สั่งซื้อ</button>
 			</form>
-
 
 <!-- ใน process.php -->
 
@@ -485,14 +468,14 @@ h4 {
 	</div>
 
 	<!-- Body -->
-	<h4></h4>
+	<h4>อาหารจานหลัก</h4>
 	<div class="body">
 		<div class="body-box">
 			<div class="box1">
 				<ul class="mode">
 					<li><a href="#">อาหารจานหลัก</a></li>
-					<li><a href="#chabu">ชาบูจิ้มจุ่มแจ่วฮ้อน</a></li>
-					<li><a href="#ของทานเล่น">ของทานเล่น</a></li>
+					<li><a href="#">ชาบูจิ้มจุ่มแจ่วฮ้อน</a></li>
+					<li><a href="#">ของทานเล่น</a></li>
 					<li><a href="#">เครื่องดื่ม</a></li>
 				</ul>
 			</div>
@@ -558,73 +541,6 @@ h4 {
 					<div class="detail">ชื่อเมนู: ไส้ย่าง</div>
 					<div class="price">ราคา: 60 บาท</div>
 					<div class="add-the-cart"><button onclick="addToCart('ไส้ย่าง', 60, this)">รับเมนู</button></div>
-				</div>
-
-				<!-- ชาบูแจ่วฮ้อน -->
-				
-				<div class="box-item" id="chabu">
-					<div class="img"><img src="PICTURE/จิ้มจุ่มม.jpg" alt="จิ้มจุ่มม"></div>
-					<div class="detail">ชื่อเมนู: จิ้มจุ่ม </div>
-					<div class="price">ราคา: 90 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('จิ้มจุ่มม', 90, this)">รับเมนู</button></div>
-				</div>
-				
-				<div class="box-item">
-					<div class="img"><img src="PICTURE/จื้มจุ่มชุด1.jpg" alt="จิ้มจุ่มชุดที่1"></div>
-					<div class="detail">ชื่อเมนู: จิ้มจุ่มชุดที่1</div>
-					<div class="price">ราคา: 80 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('จิ้มจุ่มชุดที่1', 80, this)">รับเมนู</button></div>
-				</div>
-
-				<div class="box-item">
-					<div class="img"><img src="PICTURE/IMG_9682.JPG" alt="จิ้มจุ่มชุดที่2"></div>
-					<div class="detail">ชื่อเมนู: จิ้มจุ่มชุดที่2</div>
-					<div class="price">ราคา: 20 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('จิ้มจุ่มชุดที่2', 20, this)">รับเมนู</button></div>
-				</div>
-
-				<div class="box-item">
-					<div class="img"><img src="PICTURE/IMG_9683.JPG" alt="จิ้มจุ่มชุดที่3"></div>
-					<div class="detail">ชื่อเมนู: จิ้มจุ่มชุดที่3</div>
-					<div class="price">ราคา: 80 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('จิ้มจุ่มชุดที่3', 80, this)">รับเมนู</button></div>
-				</div>
-
-				<div class="box-item">
-					<div class="img"><img src="PICTURE/IMG_9684.JPG" alt="จิ้มจุ่มชุดที่4"></div>
-					<div class="detail">ชื่อเมนู: จิ้มจุ่มชุดที่4</div>
-					<div class="price">ราคา: 20 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('จิ้มจุ่มชุดที่4', 20, this)">รับเมนู</button></div>
-				</div>
-
-				<div class="box-item">
-					<div class="img"><img src="PICTURE/IMG_9685.JPG" alt="จิ้มจุ่มชุดที่5"></div>
-					<div class="detail">ชื่อเมนู: จิ้มจุ่มชุดที่5</div>
-					<div class="price">ราคา: 80 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('จิ้มจุ่มชุดที่5', 80, this)">รับเมนู</button></div>
-				</div>
-
-				<!-- ของทานเล่น -->
-
-				<div class="box-item" id="ของทานเล่น">
-					<div class="img"><img src="" alt="ก้อยเนื้อ"></div>
-					<div class="detail">ชื่อเมนู: </div>
-					<div class="price">ราคา: 90 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('ก้อยเนื้อ', 90, this)">รับเมนู</button></div>
-				</div>
-				
-				<div class="box-item">
-					<div class="img"><img src="PICTURE/ไก่ย่าง.jpg" alt="ไก่ย่าง"></div>
-					<div class="detail">ชื่อเมนู: </div>
-					<div class="price">ราคา: 80 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('ไก่ย่าง', 80, this)">รับเมนู</button></div>
-				</div>
-
-				<div class="box-item">
-					<div class="img"><img src="PICTURE/ข้าวเหนียว.png" alt="ข้าวเหนียว"></div>
-					<div class="detail">ชื่อเมนู: </div>
-					<div class="price">ราคา: 20 บาท</div>
-					<div class="add-the-cart"><button onclick="addToCart('ข้าวเหนียว', 20, this)">รับเมนู</button></div>
 				</div>
 			</div>
 		</div>

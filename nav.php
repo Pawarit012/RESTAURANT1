@@ -182,7 +182,7 @@ nav {
                 <ul class="menu">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="menu.php">Menu</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
 
                     <?php if (!isset($_SESSION["username"])): ?>
                         <li><a href="login.php">LOG-In</a></li>
