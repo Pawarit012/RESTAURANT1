@@ -159,7 +159,28 @@
     
         <div class="content">
             <div class="left-section">
-                <h1 class="title">ร้านเปิดทำการ: 09.00 - 21.00</h1>
+                <h1 class="title">
+                    ร้านเปิดทำการ: 09.00 - 21.00
+                    <span id="current-time" style="font-size: 28px; color: gray; margin-left: 10px;"></span>
+                </h1>
+
+        <script>
+        function updateTime() {
+             const now = new Date();
+            const timeString = now.toLocaleTimeString('th-TH', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+        });
+        document.getElementById("current-time").textContent = `(เวลาปัจจุบัน ${timeString})`;
+}
+
+// อัปเดตทันทีเมื่อโหลดหน้า และอัปเดตทุก 1 วินาที
+updateTime();
+setInterval(updateTime, 1000);
+</script>
+
+
                 
                 <div class="contact-item">
                     <div class="icon-circle">
