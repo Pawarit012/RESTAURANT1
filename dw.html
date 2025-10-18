@@ -1,112 +1,110 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>เมนูอาหาร</title>
-  <style>
-    body {
-      font-family: 'Sarabun', sans-serif;
-      background-color: #fffaf2;
-      margin: 0;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตัวอย่างการใช้ CSS Animation</title>
+<style>
+/* พื้นหลังและการจัดวาง */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
 
-    .category-buttons {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+/* 🔹 Animation พิมพ์ตัวอักษร */
+.typing {
+  font-size: 2em;
+  border-right: 3px solid #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 18ch; } /* ความยาวข้อความ */
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
 
-    .category-buttons button {
-      background-color: #ff9800;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+/* 🔹 Fade-in ข้อความด้านล่าง */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
+  animation-delay: 3s;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    .category-buttons button:hover {
-      background-color: #e68900;
-    }
+/* 🔹 ปุ่มเด้งเบาๆ */
+.btn {
+  margin-top: 30px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 8px;
+  background: #00d4ff;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  animation: bounce 1.2s infinite;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #00ffb7;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
 
-    .menu-item {
-      display: none; /* ซ่อนไว้ก่อน */
-      background: white;
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 10px;
-    }
+/* 🔹 กล่องหมุน */
+.box {
+  width: 100px;
+  height: 100px;
+  background: #00ffb7;
+  border-radius: 15px;
+  margin-top: 50px;
+  animation: rotate 4s linear infinite;
+}
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
 
-    .menu-item img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-right: 10px;
-    }
-
-    .menu-item.show {
-      display: flex;
-      align-items: center;
-    }
-  </style>
+/* 🔹 เอฟเฟกต์เรืองแสง */
+.glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #0ff, 0 0 20px #00d2ff;
+  }
+  to {
+    text-shadow: 0 0 20px #00ffb7, 0 0 40px #00d2ff;
+  }
+}
+</style>
 </head>
 <body>
 
-  <h1>เมนูอาหาร</h1>
+<h1 class="typing">สวัสดี! ยินดีต้อนรับเข้าสู่เว็บของเรา</h1>
 
-  <div class="category-buttons">
-    <button onclick="filterMenu('all')">ทั้งหมด</button>
-    <button onclick="filterMenu('fried')">ของทอด</button>
-    <button onclick="filterMenu('soup')">ของต้ม</button>
-    <button onclick="filterMenu('grill')">ของย่าง</button>
-  </div>
+<p class="fade-in glow">เรียนรู้ CSS Animation ง่าย ๆ ได้ที่นี่ 🎨</p>
 
-  <div class="menu-list">
-    <div class="menu-item fried">
-      <img src="fried_chicken.jpg" alt="">
-      <div>ไก่ทอด</div>
-    </div>
+<button class="btn">เริ่มต้นเลย</button>
 
-    <div class="menu-item soup">
-      <img src="tomyum.jpg" alt="">
-      <div>ต้มยำกุ้ง</div>
-    </div>
-
-    <div class="menu-item grill">
-      <img src="grilled_pork.jpg" alt="">
-      <div>หมูปิ้ง</div>
-    </div>
-
-    <div class="menu-item fried">
-      <img src="fried_fish.jpg" alt="">
-      <div>ปลาทอดน้ำปลา</div>
-    </div>
-
-    <div class="menu-item soup">
-      <img src="clear_soup.jpg" alt="">
-      <div>แกงจืดเต้าหู้หมูสับ</div>
-    </div>
-  </div>
-
-  <script>
-    // แสดงทั้งหมดตอนโหลดครั้งแรก
-    filterMenu('all');
-
-    function filterMenu(category) {
-      const items = document.querySelectorAll('.menu-item');
-      items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-          item.classList.add('show');
-        } else {
-          item.classList.remove('show');
-        }
-      });
-    }
-  </script>
+<div class="box"></div>
 
 </body>
 </html>

@@ -1,5 +1,4 @@
-
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mozilla+Text:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mozilla+Text:wght@200..700&display=swap');
 
 * {
     box-sizing: border-box;
@@ -33,9 +32,16 @@ nav {
 
 }
 
-.logo {
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
 
+.logo {
     align-items: center;
+    border-radius: 15px;
+    animation: rotate 4s linear infinite;
 }
 
 .menu {
@@ -45,7 +51,7 @@ nav {
     align-items: center;
     border-radius: 10px;
     margin: 2rem;
-    
+
 }
 
 .menu li {
@@ -53,10 +59,12 @@ nav {
     text-decoration: none;
     align-items: center;
     border-radius: 10px;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
+    border: none;
+    cursor: pointer;
+    animation: bounce 1.2s infinite;
 
 
 }
@@ -64,17 +72,17 @@ nav {
 .menu li a {
     list-style: none;
     text-decoration: none;
+    border: none;
     color: black;
     border-radius: 10px;
     font-size: larger;
     font-family: var(--font-family);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     background-color: rgb(230, 216, 34);
     padding: .5rem 1rem;
-   
+
 }
 
 /* Cart Icon */
