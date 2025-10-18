@@ -59,11 +59,14 @@ nav {
     text-decoration: none;
     align-items: center;
     border-radius: 10px;
-    transform: translateY(0);
+    transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease; /* ทำให้เอฟเฟกต์นุ่มนวล */
+    animation: bounce 1.2s infinite;
+
+
 }
 
 .menu li a {
@@ -74,34 +77,14 @@ nav {
     border-radius: 10px;
     font-size: larger;
     font-family: var(--font-family);
-    transform: translateY(0);
+    transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
     background-color: rgb(230, 216, 34);
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease, box-shadow 0.4s ease, text-shadow 0.4s ease;
+    padding: .5rem 1rem;
+
 }
 
-.menu li a:hover {
-    color: #fff;
-    background-color: #f5a623; /* เปลี่ยนสีพื้นเล็กน้อย */
-    box-shadow: 0 0 10px #f5a623, 0 0 20px #f5a623, 0 0 30px #ffdd00;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ffdd00;
-    transform: translateY(-3px) scale(1.05); /* ลอยขึ้นเล็กน้อย */
-}
-
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 10px #f5a623, 0 0 20px #f5a623, 0 0 30px #ffdd00;
-    }
-    50% {
-        box-shadow: 0 0 20px #f5a623, 0 0 30px #f5a623, 0 0 40px #ffdd00;
-    }
-}
-
-/* เมื่อเอาเมาส์วาง ให้เริ่ม pulse */
-.menu li a:hover {
-    animation: glow 1.5s infinite alternate;
-}
 /* Cart Icon */
 .cart-icon {
     position: relative;

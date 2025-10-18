@@ -3,108 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ตัวอย่างการใช้ CSS Animation</title>
+<title>Glow Text</title>
 <style>
-/* พื้นหลังและการจัดวาง */
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #141e30, #243b55);
-  color: #fff;
+  background: #000;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
-  overflow: hidden;
-  text-align: center;
 }
 
-/* 🔹 Animation พิมพ์ตัวอักษร */
-.typing {
-  font-size: 2em;
-  border-right: 3px solid #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
-}
-@keyframes typing {
-  from { width: 0; }
-  to { width: 18ch; } /* ความยาวข้อความ */
-}
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-/* 🔹 Fade-in ข้อความด้านล่าง */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 2s ease-in forwards;
-  animation-delay: 3s;
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* 🔹 ปุ่มเด้งเบาๆ */
-.btn {
-  margin-top: 30px;
-  padding: 15px 35px;
-  border: none;
-  border-radius: 8px;
-  background: #00d4ff;
-  color: #000;
-  font-weight: bold;
-  font-size: 1.1em;
-  cursor: pointer;
-  animation: bounce 1.2s infinite;
+h1 {
+  color: #0ff;
+  font-size: 3rem;
   transition: 0.3s;
 }
-.btn:hover {
-  background: #00ffb7;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
 
-/* 🔹 กล่องหมุน */
-.box {
-  width: 100px;
-  height: 100px;
-  background: #00ffb7;
-  border-radius: 15px;
-  margin-top: 50px;
-  animation: rotate 4s linear infinite;
-}
-@keyframes rotate {
-  to { transform: rotate(360deg); }
-}
-
-/* 🔹 เอฟเฟกต์เรืองแสง */
-.glow {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-@keyframes glow {
-  from {
-    text-shadow: 0 0 10px #0ff, 0 0 20px #00d2ff;
-  }
-  to {
-    text-shadow: 0 0 20px #00ffb7, 0 0 40px #00d2ff;
-  }
+h1:hover {
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+  transform: scale(1.05);
 }
 </style>
 </head>
 <body>
 
-<h1 class="typing">สวัสดี! ยินดีต้อนรับเข้าสู่เว็บของเรา</h1>
-
-<p class="fade-in glow">เรียนรู้ CSS Animation ง่าย ๆ ได้ที่นี่ 🎨</p>
-
-<button class="btn">เริ่มต้นเลย</button>
-
-<div class="box"></div>
+<h1>Glowing Text</h1>
 
 </body>
 </html>
