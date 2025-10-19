@@ -63,7 +63,7 @@ nav {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease; /* ทำให้เอฟเฟกต์นุ่มนวล */
+    transition: ; /* ทำให้เอฟเฟกต์นุ่มนวล */
 }
 
 .menu li a {
