@@ -1,0 +1,20 @@
+body {
+    background-color: black;
+}
+
+.box {
+    color: aqua;
+    background-color: azure;
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    transition-property: width;
+    transition-duration:1s ;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    
+    
+}
+.box:hover {
+    width: 400px;
+}
