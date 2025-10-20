@@ -11,11 +11,6 @@
     --font-family: montserrat, serif;
 }
 
-.container {
-    max-width: auto;
-    margin: 0 auto;
-
-}
 
 nav {
 
@@ -64,6 +59,11 @@ nav {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease; /* ทำให้เอฟเฟกต์นุ่มนวล */
+    
+}
+
+.menu li:hover {
+    transform: translateY(-5px);
 }
 
 .menu li a {
