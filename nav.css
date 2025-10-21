@@ -27,17 +27,38 @@ nav {
 
 }
 
-@keyframes rotate {
+.logo {
+    align-items: center;
+    border-radius: 15px;
+    animation: rotateCW 4s linear infinite; /* หมุนตามเข็ม */
+    transition: all 0.3s ease;
+}
+
+/* เมื่อเอาเมาส์ไปวาง */
+.logo:hover {
+    animation: rotateCCW 4s linear infinite; /* หมุนทวนเข็ม */
+}
+
+/* หมุนตามเข็ม */
+@keyframes rotateCW {
+    from {
+        transform: rotate(0deg);
+    }
     to {
         transform: rotate(360deg);
     }
 }
 
-.logo {
-    align-items: center;
-    border-radius: 15px;
-    animation: rotate 4s linear infinite;
+/* หมุนทวนเข็ม */
+@keyframes rotateCCW {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
 }
+
 
 .menu {
     display: flex;
