@@ -79,6 +79,7 @@ $result = $stmt->get_result();
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
+            
         }
         
         .alert-error {
